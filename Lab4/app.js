@@ -23,7 +23,7 @@ mongoose
   });
 
 app.get("/", (req, res) => {
-  res.send("Hi! This is Fayaad OAuth Service 🔐");
+  res.send("Hi! This is Fayaad CRUD Service 📦");
 });
 
 require("./app/routes/mahasiswa.routes.js")(app);
