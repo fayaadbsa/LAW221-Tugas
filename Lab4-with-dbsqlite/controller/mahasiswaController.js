@@ -92,6 +92,7 @@ const remove = async (req, res) => {
           message: "Data tidak ditemukan dengan id " + req.params.id,
         });
       }
+      data.destroy()
       res.send("Berhasil menghapus data!");
     })
     .catch((err) => {
