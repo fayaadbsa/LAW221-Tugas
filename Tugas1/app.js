@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 // VARIABLES
 
-const port = 28433;
+const port = 28433; // port free 1
 const APP_CLIENT_ID = "fayaadcid";
 const APP_CLIENT_SECRET = "fayaadcsecret";
 const APP_NPM_FAYAAD = "1906398433";

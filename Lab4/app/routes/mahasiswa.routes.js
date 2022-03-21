@@ -24,7 +24,5 @@ module.exports = (app) => {
 
   app.delete("/mahasiswa/:npm", mahasiswa.remove);
 
-  app.delete("/mahasiswa/:npm", mahasiswa.remove);
-
   app.post("/uploadImg", upload.single("img"), mahasiswa.uploadImg);
 };

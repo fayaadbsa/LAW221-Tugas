@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const dbConfig = require("./config/database.config.js");
 const mongoose = require("mongoose");
 const app = express();
-const port = 8080;
+const port = 58433; // port free 4
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
