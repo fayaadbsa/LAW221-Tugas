@@ -6,15 +6,19 @@ class Mahasiswa extends Model {}
 
 Mahasiswa.init(
   {
+    id:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
     nama: {
       type: DataTypes.STRING
     },
-    alamat: {
+    pilihan1: {
       type: DataTypes.STRING
     },
-    npm: {
+    pilihan2: {
       type: DataTypes.STRING,
-      primaryKey: true
     }
   },
   {

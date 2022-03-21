@@ -7,11 +7,11 @@ router.post("/mahasiswa", mahasiswa.create);
 
 router.get("/mahasiswa", mahasiswa.findAll);
 
-router.get("/mahasiswa/:npm", mahasiswa.findOne);
+router.get("/mahasiswa/:id", mahasiswa.findOne);
 
-router.put("/mahasiswa/:npm", mahasiswa.update);
+router.put("/mahasiswa/:id", mahasiswa.update);
 
-router.delete("/mahasiswa/:npm", mahasiswa.remove);
+router.delete("/mahasiswa/:id", mahasiswa.remove);
 
 module.exports = {
   routes: router

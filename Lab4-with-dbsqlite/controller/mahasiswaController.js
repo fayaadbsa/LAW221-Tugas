@@ -21,8 +21,8 @@ const create = async (req, res) => {
 
   const mahasiswa = {
     nama: req.body.nama,
-    alamat: req.body.alamat,
-    npm: req.body.npm,
+    pilihan1: req.body.pilihan1,
+    pilihan2: req.body.pilihan2,
   };
 
   await Mahasiswa.create(mahasiswa)
@@ -37,7 +37,7 @@ const create = async (req, res) => {
 };
 
 const findOne = async (req, res) => {
-  await Mahasiswa.findOne({ where: { npm: req.params.npm } })
+  await Mahasiswa.findOne({ where: { id: req.params.id } })
     .then((data) => {
       res.send(data);
     })
@@ -57,14 +57,15 @@ const update = async (req, res) => {
 
   const mahasiswa = {
     nama: req.body.nama,
-    alamat: req.body.alamat,
+    pilihan1: req.body.pilihan1,
+    pilihan2: req.body.pilihan2,
   };
 
-  await Mahasiswa.update(mahasiswa, { where: { npm: req.params.npm } })
+  await Mahasiswa.update(mahasiswa, { where: { id: req.params.id } })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
-          message: "Data tidak ditemukan dengan npm " + req.params.npm,
+          message: "Data tidak ditemukan dengan id " + req.params.id,
         });
       }
       res.send(data);
@@ -72,23 +73,23 @@ const update = async (req, res) => {
     .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "Data tidak ditemukan dengan npm " + req.params.npm,
+          message: "Data tidak ditemukan dengan id " + req.params.id,
         });
       }
       return res.status(500).send({
         message:
-          "Terjadi kesalahan dalam memperbarui mahasisa dengan npm " +
-          req.params.npm,
+          "Terjadi kesalahan dalam memperbarui mahasisa dengan id " +
+          req.params.id,
       });
     });
 };
 
 const remove = async (req, res) => {
-  await Mahasiswa.findOne({ npm: req.params.npm })
+  await Mahasiswa.findOne({ id: req.params.id })
     .then((data) => {
       if (!data) {
         return res.status(404).send({
-          message: "Data tidak ditemukan dengan npm " + req.params.npm,
+          message: "Data tidak ditemukan dengan id " + req.params.id,
         });
       }
       res.send("Berhasil menghapus data!");
@@ -96,13 +97,13 @@ const remove = async (req, res) => {
     .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "Data tidak ditemukan dengan npm " + req.params.npm,
+          message: "Data tidak ditemukan dengan id " + req.params.id,
         });
       }
       return res.status(500).send({
         message:
-          "Terjadi kesalahan dalam memperbarui mahasisa dengan npm" +
-          req.params.npm,
+          "Terjadi kesalahan dalam memperbarui mahasisa dengan id" +
+          req.params.id,
       });
     });
 };
