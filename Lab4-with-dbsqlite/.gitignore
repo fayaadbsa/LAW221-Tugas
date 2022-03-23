@@ -438,3 +438,9 @@ gradle-app.setting
 hs_err_pid*
 
 /.idea
+
+# heroku
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env

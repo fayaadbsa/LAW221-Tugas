@@ -2,8 +2,9 @@
   "name": "lab4",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,5 +17,8 @@
     "nodemon": "^2.0.15",
     "sequelize": "^6.17.0",
     "sqlite3": "^5.0.2"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
