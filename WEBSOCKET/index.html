@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    "use strict";
+    // Initialize everything when the window finishes loading
+    window.addEventListener("load", function(event) {
+      var status = document.getElementById("status");
+      var url = document.getElementById("url");
+      var open = document.getElementById("open");
+      var disconnect = document.getElementById("disconnect");
+      var send = document.getElementById("send");
+      var text = document.getElementById("text");
+      var message = document.getElementById("message");
+      var socket;
+      status.textContent = "Not Connected";
+      url.value = "ws://localhost:8000";
+      disconnect.disabled = true;
+      send.disabled = true;
+      // Create a new connection when the Connect button is clicked
+      open.addEventListener("click", function(event) {
+        open.disabled = true;
+        //socket = new WebSocket(url.value, "echo-protocol");
+        socket = new WebSocket(url.value, "testing-protocol");
+        socket.onopen = function()
+        {
+          // Web Socket is connected, send data using send()
+          disconnect.disabled = false;
+          send.disabled = false;
+          status.textContent = "Connected";
+        };
+
+        socket.onmessage = function(event)
+        {
+          // Web Socket is connected, send data using send()
+          message.textContent = "Server replies: " + event.data;
+        };
+        socket.onerror = function(event)
+        {
+          // Web Socket is connected, send data using send()
+          message.textContent = "Error: " + event;
+        };
+
+        socket.onclose= function(event)
+        {
+            open.disabled = false;
+            status.textContent = "Not Connected";
+        }
+      });
+
+ // Close the connection when the Disconnect button is clicked
+ disconnect.addEventListener("click", function(event) {
+        disconnect.disabled = true;
+        send.disabled = true;
+        message.textContent = "";
+        socket.disconnect();
+      });
+      // Send text to the server when the Send button is clicked
+      send.addEventListener("click", function(event) {
+        socket.send(text.value);
+        text.value = "";
+       status.textContent = "Connected!, " + "Buffered: " + socket.bufferedAmount;
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Websocket Echo Client Example</h1>
+  Status: <font color="red"><span id="status" ></span></font><br />
+  URL: <input id="url" /><br />
+  <input id="open" type="button" value="Connect" />&nbsp;
+  <input id="disconnect" type="button" value="Disconnect" /><br />
+  <input id="send" type="button" value="Send To Server" />&nbsp;
+  <input id="text" /><br />
+  <span id="message"></span>
+</body>
+</html>
