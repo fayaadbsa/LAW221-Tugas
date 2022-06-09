@@ -1,0 +1,24 @@
+{
+  "name": "lab4",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start-read": "nodemon readService.js",
+    "start-update": "nodemon updateService.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.17.0",
+    "sqlite3": "^5.0.2"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
