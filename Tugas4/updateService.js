@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const sequelize = require("./dbconfig");
 const Mahasiswa = require("./mahasiswa");
 const app = express();
-const port = 38433; // port free 4
+const port = 18433; // port free 4
 // const port = 8081;
 
 sequelize.sync({ force: true }).then(async () => {
